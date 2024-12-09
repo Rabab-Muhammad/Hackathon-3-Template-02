@@ -20,7 +20,7 @@ const Page = () => {
         </div>
 
         {/* Right side - Content */}
-        <div className="w-full lg:w-[50%] flex flex-col justify-start lg:px-10 pt-28 px-8">
+        <div className="w-full lg:w-[50%] flex flex-col justify-start lg:px-10 pt-14 px-8">
           {/* Title and Price */}
           <div className="py-5">
             <h1 className="text-3xl lg:text-4xl font-bold text-[#2A254B]">
@@ -53,18 +53,29 @@ const Page = () => {
               Dimensions
             </h2>
             <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 text-[#6A6A6A]">
-              <div className="text-center">
+              <div className="text-left">
                 <div className="font-medium">Height</div>
                 <div>110cm</div>
               </div>
-              <div className="text-center">
+              <div className="text-left">
                 <div className="font-medium">Width</div>
                 <div>75cm</div>
               </div>
-              <div className="text-center">
+              <div className="text-left">
                 <div className="font-medium">Depth</div>
                 <div>50cm</div>
               </div>
+            </div>
+          </div>
+
+          <div className="mt-5">
+            <div className="flex space-x-5 items-center text-xl">
+                <p>Amount:</p>
+                <div className="flex gap-3 bg-gray-300 py-1 px-3">
+                    <p>-</p>
+                    <p>1</p>
+                    <p>+</p>
+                </div>
             </div>
           </div>
 
