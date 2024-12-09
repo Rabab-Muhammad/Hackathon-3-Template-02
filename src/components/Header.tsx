@@ -51,22 +51,22 @@ const Header = () => {
             <Link href="/">Home</Link>
           </li>
           <li className="hover:underline">
+            <Link href="./productlisting2">All Product</Link>  
+          </li>
+          <li className="hover:underline"> 
+            <Link href="./productlisting ">ProductListing</Link>
+          </li>
+          <li className="hover:underline">
+            <Link href="./about">About</Link>  
+          </li>
+          <li className="hover:underline">
             <Link href="#">Ceramics</Link>
           </li>
           <li className="hover:underline">
             <Link href="#">Tables</Link>
           </li>
           <li className="hover:underline">
-            <Link href="#">Chairs</Link>
-          </li>
-          <li className="hover:underline">
-            <Link href="./productlisting2">All Product</Link>
-          </li>
-          <li className="hover:underline">
-            <Link href="./productlisting">ProductListing</Link>
-          </li>
-          <li className="hover:underline">
-            <Link href="./about">About</Link>
+            <Link href="#">chairs</Link>
           </li>
         </ul>
       </div>
@@ -99,23 +99,23 @@ const Header = () => {
                 </Link>
               </li>
               <li>
-                <Link href="#ceremic" onClick={() => setIsMenuOpen(false)}>
+                <Link href="/productlisting2" onClick={() => setIsMenuOpen(false)}>
                   Ceramics
                 </Link>
               </li>
               <li>
-                <Link href="#" onClick={() => setIsMenuOpen(false)}>
+                <Link href="/productlisting" onClick={() => setIsMenuOpen(false)}>
                   Tables
                 </Link>
               </li>
               <li>
-                <Link href="#" onClick={() => setIsMenuOpen(false)}>
+                <Link href="/about" onClick={() => setIsMenuOpen(false)}>
                   Chairs
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/productlisting2"
+                  href="#"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   All Products
@@ -123,14 +123,14 @@ const Header = () => {
               </li>
               <li>
                 <Link
-                  href="/productlisting"
+                  href="#"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   ProductListing
                 </Link>
               </li>
               <li>
-                <Link href="/about" onClick={() => setIsMenuOpen(false)}>
+                <Link href="#" onClick={() => setIsMenuOpen(false)}>
                   About
                 </Link>
               </li>
