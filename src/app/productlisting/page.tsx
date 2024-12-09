@@ -8,7 +8,7 @@ const Page = () => {
   return (
     <div>
       <div className="w-full h-auto flex flex-col lg:flex-row text-[#2A254B]">
-        {/* Left side - Image */}
+        {/* Left side  */}
         <div className="w-full lg:w-[50%] mb-10 lg:mb-0">
           <Image
             src="/images/produclisting.svg"
@@ -19,7 +19,7 @@ const Page = () => {
           />
         </div>
 
-        {/* Right side - Content */}
+        {/* Right side  */}
         <div className="w-full lg:w-[50%] flex flex-col justify-start lg:px-10 pt-14 px-8">
           {/* Title and Price */}
           <div className="py-5">
@@ -79,7 +79,7 @@ const Page = () => {
             </div>
           </div>
 
-          {/* Add to Cart Button aligned to the right */}
+          {/* button */}
           <div className=" mt-10 flex justify-end">
             <button className="bg-[#2A254B] text-white py-3 px-6  w-full sm:w-auto">
               Add to Cart
@@ -87,6 +87,8 @@ const Page = () => {
           </div>
         </div>
       </div>
+
+      {/* components */}
       <div>
         <div>
           <Ceremics />
