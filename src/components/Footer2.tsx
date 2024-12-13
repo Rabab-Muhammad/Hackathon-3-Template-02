@@ -4,7 +4,7 @@ import { CiTwitter } from "react-icons/ci";
 
 const Footer2 = () => {
   return (
-    <footer className="py-8 px-4 md:px-12 bg-[#2A254B] text-white">
+    <footer className="py-8 px-4 w-full bg-[#2A254B] text-white">
       {/* Top Section */}
       <div className="flex flex-col gap-8 md:flex-row md:justify-between">
         {/* Logo and Address */}
