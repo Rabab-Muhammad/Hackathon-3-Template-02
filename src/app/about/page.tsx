@@ -4,7 +4,7 @@ import Brand from "@/components/Brand";
 import ClubBenefits from "@/components/ClubBenefits";
 import AboutHeader from "@/components/AboutHeader";
 import Footer2 from "@/components/Footer2";
-import TopBar from "@/components/Topbar";
+import TopBar from "@/components/TopBar";
 
 const Page = () => {
   return (

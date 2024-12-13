@@ -3,9 +3,10 @@ import Image from "next/image";
 import Brand from "@/components/Brand";
 import ClubBenefits from "@/components/ClubBenefits";
 import Footer2 from "@/components/Footer2";
+import TopBar from "@/components/TopBar";
 import ProductDetailHeader from "@/components/ProductDetailHeader";
-import TopBar from "@/components/Topbar";
 import Like from "@/components/Like";
+
 
 const Page = () => {
   return (
