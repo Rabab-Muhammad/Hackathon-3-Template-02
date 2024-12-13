@@ -126,6 +126,112 @@ const Page = () => {
             <p className="text-xl">The Lucy Lamp</p>
             <p className="text-sm">£399</p>
           </div>
+
+
+             {/* Product 5*/}
+             <div  className="flex flex-col ">
+            <Image
+              src={"/images/productlisting201.svg"}
+              alt={"Product1"}
+              width={305}
+              height={375}
+              className="object-cover mb-4"
+            />
+            <p className="text-xl">The Dandy chair</p>
+            <p className="text-sm">£250</p>
+          </div>
+
+             {/* Product 6*/}
+             <div  className="flex flex-col ">
+            <Image
+              src={"/images/produclisting202.svg"}
+              alt={"Product1"}
+              width={305}
+              height={375}
+              className="object-cover mb-4"
+            />
+            <p className="text-xl"> Rustic Vase Set</p>
+            <p className="text-sm">£155</p>
+          </div>
+
+            {/* Product 7*/}
+            <div  className="flex flex-col ">
+            <Image
+              src={"/images/productlisting203.svg"}
+              alt={"Product1"}
+              width={305}
+              height={375}
+              className="object-cover mb-4"
+            />
+            <p className="text-xl">The Silky Vase </p>
+            <p className="text-sm">£125</p>
+          </div>
+
+            {/* Product 8*/}
+            <div  className="flex flex-col ">
+            <Image
+              src={"/images/productlisting204.svg"}
+              alt={"Product1"}
+              width={305}
+              height={375}
+              className="object-cover mb-4"
+            />
+            <p className="text-xl">The Lucy Lamp</p>
+            <p className="text-sm">£399</p>
+          </div>
+
+            {/* Product 9*/}
+            <div  className="flex flex-col">
+            <Image
+              src={"/images/ceremic1.svg"}
+              alt={"Product1"}
+              width={305}
+              height={375}
+              className="object-cover mb-4"
+            />
+            <p className="text-xl">The Dandy chair </p>
+            <p className="text-sm">£250</p>
+          </div>
+
+            {/* Product 10*/}
+            <div  className="flex flex-col ">
+            <Image
+              src={"/images/ceremic2.svg"}
+              alt={"Product1"}
+              width={305}
+              height={375}
+              className="object-cover mb-4"
+            />
+            <p className="text-xl">Rustic Vase Set</p>
+            <p className="text-sm">£155</p>
+          </div>
+
+
+             {/* Product 11*/}
+            <div  className="flex flex-col ">
+            <Image
+              src={"/images/ceremic3.svg"}
+              alt={"Product1"}
+              width={305}
+              height={375}
+              className="object-cover mb-4"
+            />
+            <p className="text-xl">The Silky Vase</p>
+            <p className="text-sm">£125</p>
+          </div>
+
+           {/* Product 12*/}
+           <div  className="flex flex-col ">
+            <Image
+              src={"/images/ceremic4.svg"}
+              alt={"Product1"}
+              width={305}
+              height={375}
+              className="object-cover mb-4"
+            />
+            <p className="text-xl">The Lucy Lamp</p>
+            <p className="text-sm">£399</p>
+          </div>
         </div>
 
       {/* button */}
