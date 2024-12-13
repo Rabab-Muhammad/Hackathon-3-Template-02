@@ -96,10 +96,11 @@ const Page = () => {
         <div className="max-w-screen-xl mx-auto">
           <Brand />
           <ClubBenefits />
-          <Footer2 />
+          
         </div>
       </div>
     </div>
+    <Footer2 />
     </div>
   );
 };
