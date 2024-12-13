@@ -94,12 +94,12 @@ const Page = () => {
       {/* Brand and Club Benefits Section */}
       <div className="px-4 sm:px-8 py-6 bg-gray-100">
         <div className="max-w-screen-xl mx-auto">
-          <Brand />
-          <ClubBenefits />
-          
+        <Brand />  
         </div>
       </div>
     </div>
+   
+    <ClubBenefits />
     <Footer2 />
     </div>
   );
