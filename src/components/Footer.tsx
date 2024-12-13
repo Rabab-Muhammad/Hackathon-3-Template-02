@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <div className="w-full h-full bg-[#2A254B] text-white p-4 sm:p-6 md:p-20 ">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-8 md:space-y-0">
-        {/* Menu Section */}
+       
         <div className="text-sm space-y-4 w-full sm:w-auto">
           <h1 className="text-base font-bold">Menu</h1>
           <ul className="space-y-2">

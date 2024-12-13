@@ -2,14 +2,20 @@ import React from "react";
 import Image from "next/image";
 import Brand from "@/components/Brand";
 import ClubBenefits from "@/components/ClubBenefits";
+import AboutHeader from "@/components/AboutHeader";
+import Footer2 from "@/components/Footer2";
+import TopBar from "@/components/Topbar";
 
 const Page = () => {
   return (
+    <div>
+      <TopBar />
+      <AboutHeader />
     <div className="w-full mx-auto text-[#2A254B]">
       {/* First Section */}
-      <div className="h-auto sm:h-[277px] bg-gray-100 flex flex-col sm:flex-row items-center px-4 sm:px-8 py-6 sm:py-0">
-        <div className="max-w-screen-xl mx-auto w-full flex flex-col sm:flex-row justify-between items-center">
-          <p className="text-lg sm:text-2xl font-semibold sm:w-1/2 mb-4 sm:mb-0 text-center sm:text-left">
+      <div className="h-auto sm:h-[277px]  flex flex-col sm:flex-row items-center px-4 sm:px-8 py-6 sm:py-0">
+        <div className="max-w-screen-xl mx-auto w-full flex flex-col sm:flex-row justify-between items-center md:px-28 ">
+          <p className="text-xl md:text-4xl font-semibold sm:w-1/2 mb-4 sm:mb-0 text-center sm:text-left ">
             A brand built on the love of craftsmanship, quality, and outstanding
             customer service
           </p>
@@ -90,8 +96,10 @@ const Page = () => {
         <div className="max-w-screen-xl mx-auto">
           <Brand />
           <ClubBenefits />
+          <Footer2 />
         </div>
       </div>
+    </div>
     </div>
   );
 };

@@ -1,10 +1,10 @@
 import React from "react";
 import Image from "next/image";
 
-const Ceremics = () => {
+const Like = () => {
   return (
     <div className="w-full px-4 md:px-20 p-10 text-[#2A254B]">
-      <div className="text-[32px] my-5 text-[#2A254B]">New ceramics</div>
+      <div className="text-[32px] my-5 text-[#2A254B]">You might also like</div>
       <div className="text-[#2A254B] grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {/* 1 */}
         <div className="space-y-4">
@@ -65,4 +65,4 @@ const Ceremics = () => {
   );
 };
 
-export default Ceremics;
+export default Like ;

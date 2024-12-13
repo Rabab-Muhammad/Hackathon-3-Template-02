@@ -1,12 +1,17 @@
 import React from "react";
 import Image from "next/image";
-import Ceremics from "@/components/Ceremics";
 import Brand from "@/components/Brand";
 import ClubBenefits from "@/components/ClubBenefits";
+import Footer2 from "@/components/Footer2";
+import ProductDetailHeader from "@/components/ProductDetailHeader";
+import TopBar from "@/components/Topbar";
+import Like from "@/components/Like";
 
 const Page = () => {
   return (
     <div>
+      <TopBar />
+      <ProductDetailHeader />
       <div className="w-full h-auto flex flex-col lg:flex-row text-[#2A254B]">
         {/* Left side  */}
         <div className="w-full lg:w-[50%] mb-10 lg:mb-0">
@@ -21,7 +26,7 @@ const Page = () => {
 
         {/* Right side  */}
         <div className="w-full lg:w-[50%] flex flex-col justify-start lg:px-10 pt-14 px-8">
-          {/* Title and Price */}
+         
           <div className="py-5">
             <h1 className="text-3xl lg:text-4xl font-bold text-[#2A254B]">
               The Dandy Chair
@@ -29,7 +34,7 @@ const Page = () => {
             <p className="mt-2 text-lg lg:text-xl text-[#6A6A6A]">£250</p>
           </div>
 
-          {/* Description Section */}
+          
           <div className="my-5">
             <h2 className="text-xl lg:text-2xl font-semibold text-[#2A254B]">
               Description
@@ -71,7 +76,7 @@ const Page = () => {
           <div className="mt-5">
             <div className="flex space-x-5 items-center text-xl">
                 <p>Amount:</p>
-                <div className="flex gap-3 bg-gray-300 py-1 px-3">
+                <div className="flex gap-4 bg-[#F9F9F9] py-1 px-5">
                     <p>-</p>
                     <p>1</p>
                     <p>+</p>
@@ -91,9 +96,10 @@ const Page = () => {
       {/* components */}
       <div>
         <div>
-          <Ceremics />
+          <Like />
           <Brand />
           <ClubBenefits />
+          <Footer2 />
         </div>
       </div>
     </div>

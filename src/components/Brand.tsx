@@ -8,12 +8,12 @@ const Brand = () => {
   return (
     <div className="w-full px-4 md:px-20 py-10 text-[#2A254B]">
       <div>
-        {/* Title */}
+      
         <div className="text-[#2A254B] text-xl md:text-2xl flex justify-center items-center mb-10">
           What makes our brand different
         </div>
 
-        {/* Brand Features */}
+      
         <div className="flex flex-col md:flex-row justify-evenly items-center gap-8">
           {/* 1 */}
           <div className="text-[#2A254B] text-center md:text-left space-y-4">
