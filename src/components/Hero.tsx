@@ -5,7 +5,7 @@ const Hero = () => {
   return (
     <div className="w-full flex flex-col md:flex-row px-4 md:px-10 md:mx-16 pl-4 md:pl-0 text-[#2A254B]">
     
-      <div className="w-full md:w-[760px] h-auto md:h-[584px] bg-[#2A254B] my-0 ">
+      <div className="w-full md:w-[760px] h-auto md:h-[584px] bg-[#2A254B] my-0 md:my-10">
         <div className="p-4 md:p-14 text-white">
           <p className="text-[24px] md:text-[32px] md:pr-48">
             The furniture brand for the future, with timeless designs
