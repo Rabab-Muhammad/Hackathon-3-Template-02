@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState } from "react";
@@ -12,18 +13,14 @@ const Header = () => {
 
   return (
     <div className="p-5 text-[#2A254B] ">
-   
       <div className="flex justify-between items-center lg:justify-center lg:relative">
-      
         <IoIosSearch
           className="hidden lg:block lg:absolute lg:left-5 text-xl"
           size={30}
         />
 
-      
         <div className="text-4xl text-[#22202E]">Avion</div>
 
-       
         <div className="flex items-center lg:hidden">
           <IoIosSearch className="text-xl mr-4 text-[#726E8D]" size={30} />
           <HiOutlineMenu
@@ -32,16 +29,19 @@ const Header = () => {
           />
         </div>
 
-       
         <div className="hidden lg:flex gap-4 absolute right-5 text-[#726E8D]">
           <Link href="/cart">
-            <IoCartOutline className="text-xl" size={30} />
+            <div className="relative">
+              <IoCartOutline className="text-xl" size={30} />
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-2">
+                2
+              </span>
+            </div>
           </Link>
           <MdOutlineAccountCircle className="text-xl" size={30} />
         </div>
       </div>
 
-     
       <div className="w-full border-b-[1px] my-5"></div>
 
       {/* Nav Bar */}
@@ -51,13 +51,13 @@ const Header = () => {
             <Link href="/">Home</Link>
           </li>
           <li className="hover:underline">
-            <Link href="./allproducts">All Product</Link>  
-          </li>
-          <li className="hover:underline"> 
-            <Link href="./productdetails ">Product Details</Link>
+            <Link href="/allproducts">All Product</Link>
           </li>
           <li className="hover:underline">
-            <Link href="./about">About</Link>  
+            <Link href="/productdetails">Product Details</Link>
+          </li>
+          <li className="hover:underline">
+            <Link href="/about">About</Link>
           </li>
           <li className="hover:underline">
             <Link href="#">Ceramics</Link>
@@ -66,7 +66,7 @@ const Header = () => {
             <Link href="#">Tables</Link>
           </li>
           <li className="hover:underline">
-            <Link href="#">chairs</Link>
+            <Link href="#">Chairs</Link>
           </li>
         </ul>
       </div>
@@ -100,12 +100,12 @@ const Header = () => {
               </li>
               <li>
                 <Link href="/allproducts" onClick={() => setIsMenuOpen(false)}>
-                 All Products
+                  All Products
                 </Link>
               </li>
               <li>
                 <Link href="/productdetails" onClick={() => setIsMenuOpen(false)}>
-                 Product Details
+                  Product Details
                 </Link>
               </li>
               <li>
@@ -114,18 +114,12 @@ const Header = () => {
                 </Link>
               </li>
               <li>
-                <Link
-                  href="#"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                 Ceremics
+                <Link href="#" onClick={() => setIsMenuOpen(false)}>
+                  Ceramics
                 </Link>
               </li>
               <li>
-                <Link
-                  href="#"
-                  onClick={() => setIsMenuOpen(false)}
-                >
+                <Link href="#" onClick={() => setIsMenuOpen(false)}>
                   Tables
                 </Link>
               </li>

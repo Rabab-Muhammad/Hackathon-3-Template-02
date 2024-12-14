@@ -1,16 +1,14 @@
+"use client";
 
-"use client"
-
-import React, { useState } from 'react';
-import Link from 'next/link';
+import React, { useState } from "react";
+import Link from "next/link";
 import { IoIosSearch } from "react-icons/io";
 import { IoCartOutline } from "react-icons/io5";
 import { MdOutlineAccountCircle } from "react-icons/md";
-import { IoMdMenu } from "react-icons/io"; 
+import { IoMdMenu } from "react-icons/io";
 
 const ProductDetailHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -21,9 +19,7 @@ const ProductDetailHeader = () => {
       <div className="flex justify-between items-center w-full">
         {/* Left - Logo */}
         <div className="flex items-center justify-between w-full md:w-auto">
-          <div className="text-4xl text-[#22202E]">
-            Avion
-          </div>
+          <div className="text-4xl text-[#22202E]">Avion</div>
         </div>
 
         <nav className="flex-grow hidden md:flex justify-center">
@@ -52,22 +48,24 @@ const ProductDetailHeader = () => {
           </ul>
         </nav>
 
-        
         <div className="flex space-x-2 items-center text-[#726E8D]">
           <IoIosSearch size={30} />
           <Link href={"/cart"}>
-            <IoCartOutline size={30} />
+            <div className="relative">
+              <IoCartOutline className="text-xl" size={30} />
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-2">
+                2
+              </span>
+            </div>
           </Link>
           <MdOutlineAccountCircle size={30} />
-          
-         
+
           <button className="md:hidden" onClick={toggleMenu}>
             <IoMdMenu size={30} />
           </button>
         </div>
       </div>
 
-      
       {isMenuOpen && (
         <div className="md:hidden w-full bg-white absolute top-20 left-0 shadow-lg">
           <ul className="flex flex-col items-center space-y-4 p-4 text-[#726E8D]">

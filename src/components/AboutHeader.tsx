@@ -18,7 +18,6 @@ const AboutHeader = () => {
         <div className="text-4xl text-[#22202E] ml-4">Avion</div>
 
         <div className="hidden lg:flex gap-4 items-center text-base text-[#726E8D] absolute right-5">
-          
           <Link href="/about">About Us</Link>
           <Link href="/contact">Contact</Link>
           <Link href="/blog">Blog</Link>
@@ -26,7 +25,12 @@ const AboutHeader = () => {
           <IoIosSearch className="text-xl" size={30} />
 
           <Link href="/cart">
-            <IoCartOutline size={30} />
+            <div className="relative">
+              <IoCartOutline className="text-xl" size={30} />
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-2">
+                2
+              </span>
+            </div>
           </Link>
           <MdOutlineAccountCircle size={30} />
         </div>
@@ -39,9 +43,10 @@ const AboutHeader = () => {
         </div>
       </div>
 
-
       {/* Nav Bar (Desktop) */}
-      <div className="hidden lg:flex justify-center bg-[#F5F5F5] py-4 "> {/* Added background color here */}
+      <div className="hidden lg:flex justify-center bg-[#F5F5F5] py-4 ">
+        {" "}
+        {/* Added background color here */}
         <ul className="flex gap-12 text-base text-[#726E8D]">
           <li>
             <Link href="/">Home</Link>
@@ -103,7 +108,10 @@ const AboutHeader = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/productdetails" onClick={() => setIsMenuOpen(false)}>
+                <Link
+                  href="/productdetails"
+                  onClick={() => setIsMenuOpen(false)}
+                >
                   Product Details
                 </Link>
               </li>
