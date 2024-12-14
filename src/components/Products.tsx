@@ -1,62 +1,3 @@
-// import React from 'react'
-// import Image from 'next/image'
-
-// const Products = () => {
-//   return (
-//     <div className='w-[1440px] h-[744px] text-[#2A254B] p-20  '>
-//         <div className=''>
-//             <div className='text-[32px] '>Our popular products</div>
-//             <div className='flex gap-4'>
-//                 {/* 1 */}
-//                 <div className='space-y-4'>
-//                     <Image
-//                     src={"images/Product-1.svg"}
-//                     alt='sofa'
-//                     height={375}
-//                     width={630}
-//                     />
-//                     <p className='text-xl'>The Poplar suede sofa</p>
-//                     <p className='text-lg'>£980</p>
-//                 </div>
-
-//                 {/* 2 */}
-//                 <div className='space-y-4'>
-//                 <Image
-//                     src={"/images/Product-2.svg"}
-//                     alt='chair'
-//                     height={375}
-//                     width={305}
-//                     />
-//                 <p className='text-xl'>The Dandy chair</p>
-//                 <p className='text-lg'>£250</p>
-//                 </div>
-
-//                 {/* 3 */}
-//                 <div className='space-y-4'>
-//                 <Image
-//                     src={"/images/Product-3.png"}
-//                     alt='sofa'
-//                     height={375}
-//                     width={305}
-//                     />
-//                 <p className='text-xl'>The Dandy chair</p>
-//                 <p className='text-lg'>£250</p>
-//                 </div>
-//             </div>
-//         </div>
-
-//           {/* button */}
-//           <div className="flex justify-center items-center my-12">
-//         <button className="py-[16px] px-[32px] text-base bg-[#F9F9F9] text-balck">
-//           View collection
-//         </button>
-//         </div>
-
-//     </div>
-//   )
-// }
-
-// export default Products
 
 import React from "react";
 import Image from "next/image";
@@ -116,6 +57,7 @@ const Products = () => {
           View collection
         </button>
       </div>
+
     </div>
   );
 };

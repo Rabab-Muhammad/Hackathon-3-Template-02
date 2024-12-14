@@ -1,5 +1,7 @@
 import React from "react";
 import Image from "next/image";
+import { Button } from "@/components/ui/button"
+
 
 const Ceremics = () => {
   return (
@@ -56,10 +58,15 @@ const Ceremics = () => {
       </div>
 
       {/* Button */}
-      <div className="flex justify-center items-center mt-10">
+      {/* <div className="flex justify-center items-center mt-10">
         <button className="py-[16px] px-[32px] text-base bg-[#F9F9F9]">
           View collection
         </button>
+      </div> */}
+
+      {/* shadcn Button */}
+      <div className="flex justify-center items-center mt-16">
+      <Button variant={"mybutton"} className="w-[170px] h-[56px] ">View collection</Button>
       </div>
     </div>
   );
