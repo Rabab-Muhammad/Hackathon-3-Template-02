@@ -1,3 +1,6 @@
+
+
+
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
@@ -55,10 +58,11 @@ const Ceremics = () => {
     setCart((prevCart) => {
       const updatedCart = [...prevCart, product];
       localStorage.setItem("cart", JSON.stringify(updatedCart)); // Persisting cart to localStorage
+      console.log("Cart updated:", updatedCart); // Log the updated cart
       return updatedCart;
     });
 
-    // Show SweetAlert success popup
+    // Show SweetAlert success popup (temporarily commented out for debugging)
     Swal.fire({
       icon: "success",
       title: "Added to Cart",
@@ -77,10 +81,18 @@ const Ceremics = () => {
   };
 
   return (
-    <div id="ceramics" className="w-full  md:px-20 p-10 text-[#2A254B]">
+    <div id="ceramics" className="w-full md:px-20 p-10 text-[#2A254B]">
+      {/* Cart Icon/Count Display */}
+      <div className="fixed top-1 right-28 p-2 bg-[#2A254B] text-white rounded-full">
+        <Link href="/cart">
+          <span className="text-lg">cart ({cart.length})</span>
+        </Link>
+      </div>
+      
       <div className="text-2xl font-semibold sm:text-[32px] my-5 text-[#2A254B]">
         New Ceramics
       </div>
+      
       <div className="text-[#2A254B] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {products.slice(0, visibleCount).map((prod) => (
           <div
@@ -93,7 +105,7 @@ const Ceremics = () => {
                 alt={prod.name}
                 height={375}
                 width={305}
-                className="object-cover h-72 rounded-md  mb-2"
+                className="object-cover h-72 rounded-md mb-2"
               />
               <p className="text-xl">{prod.name}</p>
             </Link>
@@ -101,7 +113,7 @@ const Ceremics = () => {
               <p className="text-base">£{prod.price}</p>
               {/* Add to Cart Button */}
               <Button
-                className="mt-4  bg-[#2A254B] text-white rounded-md py-2 hover:bg-[#4C3F6B]"
+                className="mt-4 bg-[#2A254B] text-white rounded-md py-2 hover:bg-[#4C3F6B]"
                 onClick={() => handleAddToCart(prod)}
               >
                 Add to Cart
@@ -110,6 +122,7 @@ const Ceremics = () => {
           </div>
         ))}
       </div>
+
       {/* Button to load more products or show less */}
       <div className="flex justify-center items-center mt-16">
         {products.length > productsPerPage && (

@@ -1,3 +1,5 @@
+
+
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
@@ -52,19 +54,28 @@ const Products = () => {
 
   // Function to add product to cart with SweetAlert2
   const handleAddToCart = (product: Product) => {
-    setCart((prevCart) => {
-      const updatedCart = [...prevCart, product];
+    // Check if product is already in the cart
+    const productExists = cart.some((item) => item.slug.current === product.slug.current);
+    
+    if (productExists) {
+      Swal.fire({
+        icon: "info",
+        title: "Already in Cart",
+        text: `${product.name} is already in your cart.`,
+      });
+    } else {
+      const updatedCart = [...cart, product];
+      setCart(updatedCart);
       localStorage.setItem("cart", JSON.stringify(updatedCart)); // Persisting cart to localStorage
-      return updatedCart;
-    });
 
-    // Show SweetAlert success popup
-    Swal.fire({
-      icon: "success",
-      title: "Added to Cart",
-      text: `${product.name} has been added to your cart.`,
-      confirmButtonText: "OK",
-    });
+      // Show SweetAlert success popup
+      Swal.fire({
+        icon: "success",
+        title: "Added to Cart",
+        text: `${product.name} has been added to your cart.`,
+        confirmButtonText: "OK",
+      });
+    }
   };
 
   // Handle "View Collection" and "Show Less" button
@@ -78,31 +89,37 @@ const Products = () => {
 
   return (
     <div id="tables" className="w-full  md:px-20 p-10 text-[#2A254B]">
+      {/* Cart Icon/Count Display */}
+      <div className="fixed top-1 right-28 p-2 bg-[#2A254B] text-white rounded-full">
+        <Link href="/cart">
+          <span className="text-lg">cart ({cart.length})</span>
+        </Link>
+      </div>
       <div className="text-2xl font-semibold sm:text-[32px] my-5 text-[#2A254B]">
         Our popular products
       </div>
       <div className="text-[#2A254B] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        {products.slice(0, visibleCount).map((prod) => (
+        {products.slice(0, visibleCount).map((item) => (
           <div
-            key={prod.slug.current}
+            key={item.slug.current}
             className="bg-white p-4 rounded-md shadow-lg hover:shadow-2xl transition-all"
           >
-            <Link href={`/products/${prod.slug.current}`}>
+            <Link href={`/products/${item.slug.current}`}>
               <Image
-                src={prod.imageUrl}
-                alt={prod.name}
+                src={item.imageUrl}
+                alt={item.name}
                 height={375}
                 width={305}
-                className="object-cover h-72 rounded-md  mb-2"
+                className="object-cover h-72 rounded-md mb-2"
               />
-              <p className="text-xl">{prod.name}</p>
+              <p className="text-xl">{item.name}</p>
             </Link>
             <div className="flex justify-between items-center ">
-              <p className="text-base">£{prod.price}</p>
+              <p className="text-base">£{item.price}</p>
               {/* Add to Cart Button */}
               <Button
-                className="mt-4  bg-[#2A254B] text-white rounded-md py-2 hover:bg-[#4C3F6B]"
-                onClick={() => handleAddToCart(prod)}
+                className="mt-4 bg-[#2A254B] text-white rounded-md py-2 hover:bg-[#4C3F6B]"
+                onClick={() => handleAddToCart(item)}
               >
                 Add to Cart
               </Button>
