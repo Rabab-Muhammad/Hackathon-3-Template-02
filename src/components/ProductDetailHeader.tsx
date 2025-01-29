@@ -103,11 +103,33 @@ const ProductDetailHeader = () => {
           </Link>
           <IoMdMenu
             className="text-xl ml-4 cursor-pointer md:hidden"
-            onClick={() => setIsMenuOpen(true)}
+            onClick={() => setIsMenuOpen((prev) => !prev)}
           />
         </div>
       </div>
 
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div className="absolute top-0 left-0 w-full bg-white p-4 md:hidden">
+          <ul>
+            <li>
+              <Link href="/">Home</Link>
+            </li>
+            <li>
+              <Link href="/allproducts">All Products</Link>
+            </li>
+            <li>
+              <Link href="/about">About</Link>
+            </li>
+          </ul>
+          <HiOutlineX
+            className="absolute top-4 right-4 text-2xl cursor-pointer"
+            onClick={() => setIsMenuOpen(false)}
+          />
+        </div>
+      )}
+
+      {/* Search Bar */}
       {isSearchOpen && (
         <div className="absolute top-20 left-0 w-full p-4 bg-white shadow-md border rounded-lg">
           <input
@@ -138,6 +160,7 @@ const ProductDetailHeader = () => {
         </div>
       )}
 
+      {/* Products Search Results */}
       {products.length > 0 && (
         <div className="absolute top-36 left-0 w-full p-4 bg-white shadow-md border rounded-lg">
           <h4 className="text-lg font-semibold">Search Results</h4>
