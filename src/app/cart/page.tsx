@@ -1,113 +1,180 @@
+"use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { Button } from "@/components/ui/button";
+import { urlFor } from "@/sanity/lib/image";
+import Swal from "sweetalert2"; // Import SweetAlert2 for popups
 
-const Page = () => {
+interface IProduct {
+  name: string;
+  slug: { current: string };
+  image: { asset: { url: string } };
+  imageUrl: string;
+  price: number;
+  quantity: number; // Add a quantity property to manage the count
+}
+
+const CartPage = () => {
+  const [cart, setCart] = useState<IProduct[]>([]);
+
+  // Load cart data from localStorage
+  useEffect(() => {
+    const storedCart = localStorage.getItem("cart");
+    if (storedCart) {
+      const parsedCart = JSON.parse(storedCart);
+      // Ensure that each item has a valid quantity, default to 1 if undefined
+      const updatedCart = parsedCart.map((item: IProduct) => ({
+        ...item,
+        quantity: item.quantity || 1,
+      }));
+      setCart(updatedCart);
+    }
+  }, []);
+
+  // Function to remove an item from the cart with Swal confirmation
+  const handleRemoveFromCart = (slug: string) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, remove it!",
+      cancelButtonText: "Cancel",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const updatedCart = cart.filter((item) => item.slug.current !== slug);
+        setCart(updatedCart);
+        localStorage.setItem("cart", JSON.stringify(updatedCart));
+        Swal.fire(
+          "Removed!",
+          "The item has been removed from your cart.",
+          "success"
+        );
+      }
+    });
+  };
+
+  // Function to handle quantity change
+  const handleQuantityChange = (
+    slug: string,
+    type: "increase" | "decrease"
+  ) => {
+    const updatedCart = cart.map((item) => {
+      if (item.slug.current === slug) {
+        // Ensure the quantity starts at 1 if undefined
+        if (item.quantity === undefined || item.quantity < 1) {
+          item.quantity = 1;
+        }
+
+        // Adjust quantity based on the type (increase or decrease)
+        if (type === "increase") {
+          item.quantity = item.quantity + 1; // Increase by 1
+        } else if (type === "decrease" && item.quantity > 1) {
+          item.quantity = item.quantity - 1; // Decrease by 1, but not less than 1
+        }
+      }
+      return item;
+    });
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
+
+  // Calculate total price, ensuring that the calculation doesn't return NaN
+  const getTotalPrice = () => {
+    return cart.reduce(
+      (total, item) => total + (item.price || 0) * (item.quantity || 0),
+      0
+    );
+  };
+
   return (
-    <div>
+    <div className="bg-gray-50">
       <Header />
-    <div className="w-full h-auto bg-[#F9F9F9] text-[#2A254B]">
-      <div className="px-8 sm:px-16 md:px-32 pt-16 sm:pt-20">
-        <div className="text-4xl text-[#2A254B]">Your shopping cart</div>
 
-        <div className="pt-12 sm:pt-16 flex flex-col sm:flex-row justify-between items-center text-lg font-medium text-[#2A254B]">
-          <div>Product</div>
-          <div className="space-x-10 hidden sm:block">Quantity</div>
-          <div>Total</div>
+      <div className="w-full max-w-screen-xl mx-auto p-8 text-[#2A254B] ">
+        <h2 className="text-3xl font-bold mb-6">Your Cart</h2>
+        {cart.length === 0 ? (
+          <p className="text-center text-lg">Your cart is empty.</p>
+        ) : (
+          <div className="flex flex-wrap gap-6 justify-start">
+            {cart.map((product) => (
+              <div
+                key={product.slug.current}
+                className="bg-white p-4 rounded-md shadow-md flex flex-col items-center w-60"
+              >
+                <Link href={`/products/${product.slug.current}`}>
+                  <Image
+                    // Ensure the image URL is valid, using fallback if needed
+                    src={
+                      product.image?.asset
+                        ? urlFor(product.image.asset).width(200).url()
+                        : product.imageUrl
+                    }
+                    alt={product.name}
+                    width={200}
+                    height={200}
+                    className="w-full h-[150px] object-cover rounded-md mb-4"
+                  />
+                </Link>
+                <h3 className="font-semibold text-lg">{product.name}</h3>
+                <p className="text-xl font-bold">${product.price}</p>
+
+                {/* Quantity control */}
+                <div className="flex items-center mt-4">
+                  <Button
+                    onClick={() =>
+                      handleQuantityChange(product.slug.current, "decrease")
+                    }
+                    className="bg-gray-300 text-black px-2 py-1 rounded-md hover:bg-gray-500"
+                  >
+                    -
+                  </Button>
+                  <span className="mx-4">{product.quantity}</span>
+                  <Button
+                    onClick={() =>
+                      handleQuantityChange(product.slug.current, "increase")
+                    }
+                    className="bg-gray-300 text-black px-2 py-1 rounded-md hover:bg-gray-500"
+                  >
+                    +
+                  </Button>
+                </div>
+
+                <Button
+                  onClick={() => handleRemoveFromCart(product.slug.current)}
+                  className="mt-3 bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-700"
+                >
+                  Remove
+                </Button>
+              </div>
+            ))}
+          </div>
+        )}
+
+        <div className="mt-6">
+          <h3 className="text-2xl font-semibold">
+            Total Price: ${getTotalPrice()}
+          </h3>
         </div>
 
-        <div className="border-b-[1px] my-6 border-[#D1D1D1]"></div>
-
-        {/* Cart Item 1 */}
-        <div className="flex flex-col sm:flex-row justify-between items-center py-6 sm:py-8">
-          <div className="flex items-center space-x-4">
-            <Image
-              src={"/images/cart1.svg"}
-              alt="Product Image"
-              height={134}
-              width={109}
-              className="object-cover"
-            />
-            <div>
-              <h1 className="text-xl text-[#2A254B] font-semibold">
-                Graystone vase
-              </h1>
-              <p className="text-sm text-[#6A6A6A]">
-                A timeless ceramic vase with</p> 
-              <p className="text-sm text-[#6A6A6A]">a tri-color grey glaze.
-              </p>
-              <p className="text-base">£85</p>
-            </div>
+        {/* Only show the "Proceed to checkout" button if the cart has items */}
+        {cart.length > 0 && (
+          <div>
+            <Link href={"/checkout"}>
+              <button className=" mt-4 bg-blue-500 text-white py-2 px-6 font-semibold  rounded-md hover:bg-blue-600">
+                Proceed to checkout
+              </button>
+            </Link>
           </div>
-
-          {/* Quantity */}
-          <div className="text-center mt-4 sm:mt-0">
-            <p className="text-xl text-[#2A254B] mr-64">1</p>
-          </div>
-
-          {/* Total Section */}
-          <div className="text-xl text-[#2A254B]">£85</div>
-        </div>
-
-        <div className="border-b-[1px] my-6 border-[#D1D1D1]"></div>
-
-        {/* Cart Item 2 */}
-        <div className="flex flex-col sm:flex-row justify-between items-center py-6 sm:py-8">
-          <div className="flex items-center space-x-4">
-            <Image
-              src={"/images/cart2.svg"}
-              alt="Product Image"
-              height={134}
-              width={109}
-              className="object-cover"
-            />
-            <div>
-              <h1 className="text-xl text-[#2A254B] font-semibold">
-                Basic white vase
-              </h1>
-              <p className="text-sm text-[#6A6A6A]">
-                Beautiful and simple, this </p> 
-              <p className="text-sm text-[#6A6A6A]">is one for the classics.
-              </p>
-              <p className="text-base">£85</p>
-            </div>
-          </div>
-          {/* Quantity */}
-          <div className="text-center mt-4 sm:mt-0">
-            <p className="text-xl text-[#2A254B] mr-60  ">1</p> {/* New quantity */}
-          </div>
-          {/* Total Section */}
-          <div className="text-xl text-[#2A254B]">£125</div> {/* New price */}
-        </div>
-
-        <div className="border-b-[1px] my-6 border-[#D1D1D1]"></div>
+        )}
       </div>
-
-      {/* Subtotal Section */}
-      <div className="flex justify-center md:justify-end items-center mx-8 sm:mx-32 mt-6 sm:mt-8">
-        <div className="flex gap-3">
-          <h1 className="text-[20px] sm:text-[28px] ">Subtotal</h1>
-          <p className="text-xl sm:text-2xl">£210</p>
-        </div>
-      </div>
-
-      {/* Taxes and Shipping Section */}
-      <div className="flex justify-center sm:justify-end items-center mx-8 sm:mx-32 mt-5 text-sm">
-        <p>Taxes and shipping are calculated at checkout</p>
-      </div>
-
-      {/*  Button */}
-      <div className="flex justify-center  md:justify-end items-center mx-8 sm:mx-32 pb-10 mt-5">
-        <button className="bg-[#2A254B] py-[16px] px-[32px] text-white text-lg sm:text-xl">
-          Go to checkout
-        </button>
-      </div>
-    </div>
-    <Footer />
+      <Footer />
     </div>
   );
 };
 
-export default Page;
+export default CartPage;
