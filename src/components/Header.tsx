@@ -29,7 +29,7 @@ const Header = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [products, setProducts] = useState<Product[]>([]);
-  const [cart, setCart] = useState([]); // Cart items, assuming it's an array of items
+  const [cart] = useState([]); // Cart items, assuming it's an array of items
   const cartCount = cart.length; // Dynamic cart count
 
   // Fetch categories from Sanity CMS
