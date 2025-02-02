@@ -29,7 +29,8 @@ const Header = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [products, setProducts] = useState<Product[]>([]);
-  const [cartCount] = useState<number>(0);
+  const [cart, setCart] = useState([]); // Cart items, assuming it's an array of items
+  const cartCount = cart.length; // Dynamic cart count
 
   // Fetch categories from Sanity CMS
   useEffect(() => {
@@ -115,7 +116,7 @@ const Header = () => {
           </Link>
 
           {/* Add Auth Links for Sign Up/Login */}
-          <Link href="">
+          <Link href="/auth/signup">
             <MdOutlineAccountCircle
               className="text-xl cursor-pointer"
               size={30}
@@ -195,7 +196,7 @@ const Header = () => {
 
       {/* Nav Bar */}
       <div className="hidden lg:flex justify-center">
-        <ul className="flex gap-8 text-base text-[#726E8D] ">
+        <ul className="flex gap-8 text-base text-[#726E8D]">
           <li className="hover:underline">
             <Link href="/">Home</Link>
           </li>
@@ -238,21 +239,24 @@ const Header = () => {
                 <MdOutlineAccountCircle />
               </Link>
             </div>
-            <ul className="flex flex-col gap-4">
+            <ul className="text-center">
               <li>
-                <Link href="/" onClick={() => setIsMenuOpen(false)}>
-                  Home
-                </Link>
+                <Link href="/">Home</Link>
               </li>
               <li>
-                <Link href="/allproducts" onClick={() => setIsMenuOpen(false)}>
-                  All Products
-                </Link>
+                <Link href="/allproducts">All Products</Link>
               </li>
               <li>
-                <Link href="/about" onClick={() => setIsMenuOpen(false)}>
-                  About
-                </Link>
+                <Link href="/about">About</Link>
+              </li>
+              <li>
+                <Link href="/#ceramics">Ceramics</Link>
+              </li>
+              <li>
+                <Link href="/#tables">Tables</Link>
+              </li>
+              <li>
+                <Link href="/#tables">Chairs</Link>
               </li>
             </ul>
           </div>

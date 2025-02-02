@@ -138,13 +138,12 @@ const AllProducts = () => {
           />
         </div>
 
-         {/* Cart Button displaying the number of items */}
-         <div className="cart-summary absolute top-2 right-28 p-2 bg-[#2A254B] text-white rounded-full">
+        {/* Cart Button displaying the number of items */}
+        <div className="cart-summary absolute top-6 right-[91px] bg-red-600 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
           <Link href="/cart">
-            <span className="text-lg">Cart ({cart.length})</span>
+            <span className="text-sm">{cart.length}</span>
           </Link>
         </div>
-
 
         {/* Mobile Filter Button */}
         <div className="md:hidden flex justify-between items-center py-4 px-8">

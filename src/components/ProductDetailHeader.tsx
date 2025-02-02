@@ -131,7 +131,7 @@ const ProductDetailHeader = () => {
 
       {/* Search Bar */}
       {isSearchOpen && (
-        <div className="absolute top-20 left-0 w-full p-4 bg-white shadow-md border rounded-lg">
+        <div className="absolute top-10 left-0 w-full p-4 bg-white shadow-md border rounded-lg">
           <input
             type="text"
             placeholder="Search..."
@@ -162,13 +162,13 @@ const ProductDetailHeader = () => {
 
       {/* Products Search Results */}
       {products.length > 0 && (
-        <div className="absolute top-36 left-0 w-full p-4 bg-white shadow-md border rounded-lg">
+        <div className="absolute top-36 left-0 w-full p-4 bg-white  border rounded-lg shadow-md z-10">
           <h4 className="text-lg font-semibold">Search Results</h4>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-4">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-4">
             {products.map((product) => (
               <div
                 key={product.slug.current}
-                className="border p-4 rounded-lg shadow-md"
+                className="border p-4 rounded-lg "
               >
                 <Link href={`/products/${product.slug.current}`} passHref>
                   <Image
@@ -176,7 +176,7 @@ const ProductDetailHeader = () => {
                     alt={product.name}
                     width={500}
                     height={500}
-                    className="w-full h-40 object-cover rounded-lg"
+                    className="w-72 h-36 object-cover rounded-lg"
                   />
                   <h5 className="text-md font-semibold mt-2">{product.name}</h5>
                   <p className="text-sm text-gray-500 mt-1">${product.price}</p>
