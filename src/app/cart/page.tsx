@@ -169,7 +169,7 @@ const CartPage = () => {
 
               <Link href="/checkout">
                 <Button className="w-full mt-4 bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600">
-                  Proceed to Checkout
+                  place order
                 </Button>
               </Link>
             </div>
@@ -182,3 +182,4 @@ const CartPage = () => {
 };
 
 export default CartPage;
+
