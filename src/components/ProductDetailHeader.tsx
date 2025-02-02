@@ -11,6 +11,7 @@ import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import Image from "next/image";
 
+// Define interfaces for category and product types
 interface Category {
   name: string;
   slug: { current: string };
@@ -30,6 +31,7 @@ const ProductDetailHeader = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [products, setProducts] = useState<Product[]>([]);
+  const [cart, setCart] = useState<Product[]>([]); // Cart state to store items
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -70,6 +72,29 @@ const ProductDetailHeader = () => {
     }
   }, [searchTerm, selectedCategory]);
 
+  // Handle adding product to the cart
+  const handleAddToCart = (product: Product) => {
+    setCart((prevCart) => {
+      const updatedCart = [...prevCart, product];
+      localStorage.setItem("cart", JSON.stringify(updatedCart)); // Persist to localStorage
+      return updatedCart;
+    });
+  };
+
+  // Cart icon component with item count
+  const CartIcon = () => (
+    <Link href="/cart">
+      <div className="relative">
+        <IoCartOutline className="text-xl ml-4" size={30} />
+        {cart.length > 0 && (
+          <span className="absolute top-0 right-0 bg-red-600 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
+            {cart.length}
+          </span>
+        )}
+      </div>
+    </Link>
+  );
+
   return (
     <header className="w-full h-20 bg-white flex items-center px-6 md:px-10">
       <div className="flex justify-between items-center w-full">
@@ -95,9 +120,8 @@ const ProductDetailHeader = () => {
             size={30}
             onClick={() => setIsSearchOpen((prev) => !prev)}
           />
-          <Link href="/cart">
-            <IoCartOutline className="text-xl ml-4" size={30} />
-          </Link>
+          {/* Cart Icon with Item Count */}
+          <CartIcon />
           <Link href="/profile">
             <MdOutlineAccountCircle className="text-xl ml-4" size={30} />
           </Link>
@@ -181,6 +205,12 @@ const ProductDetailHeader = () => {
                   <h5 className="text-md font-semibold mt-2">{product.name}</h5>
                   <p className="text-sm text-gray-500 mt-1">${product.price}</p>
                 </Link>
+                <button
+                  onClick={() => handleAddToCart(product)}
+                  className="w-full mt-2 py-2 bg-[#2A254B] text-white rounded-md"
+                >
+                  Add to Cart
+                </button>
               </div>
             ))}
           </div>
