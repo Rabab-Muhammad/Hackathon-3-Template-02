@@ -1,3 +1,5 @@
+
+
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
@@ -16,28 +18,11 @@ type Product = {
   imageUrl: string;
 };
 
-interface ProductsProps {
-  cart: Product[];
-  setCart: React.Dispatch<React.SetStateAction<Product[]>>;
-}
-
-// Cart Icon Component
-const CartIcon = ({ cartItemCount }: { cartItemCount: number }) => (
-  <Link href="/cart">
-    <div className="absolute">
-      {cartItemCount > 0 && (
-        <span className="absolute top-2 right-[75px] bg-red-600 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
-          {cartItemCount}
-        </span>
-      )}
-    </div>
-  </Link>
-);
-
-const Products: React.FC<ProductsProps> = ({ cart, setCart }) => {
+const Products = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [visibleCount, setVisibleCount] = useState(4); // Controls how many products are visible
   const productsPerPage = 4; // Number of products to load each time
+  const [cart, setCart] = useState<Product[]>([]); // Cart state
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -70,10 +55,8 @@ const Products: React.FC<ProductsProps> = ({ cart, setCart }) => {
   // Function to add product to cart with SweetAlert2
   const handleAddToCart = (product: Product) => {
     // Check if product is already in the cart
-    const productExists = cart.some(
-      (item) => item.slug.current === product.slug.current
-    );
-
+    const productExists = cart.some((item) => item.slug.current === product.slug.current);
+    
     if (productExists) {
       Swal.fire({
         icon: "info",
@@ -106,6 +89,12 @@ const Products: React.FC<ProductsProps> = ({ cart, setCart }) => {
 
   return (
     <div id="tables" className="w-full  md:px-20 p-10 text-[#2A254B]">
+      {/* Cart Icon/Count Display */}
+      <div className="fixed top-1 right-28 p-2 bg-[#2A254B] text-white rounded-full">
+        <Link href="/cart">
+          <span className="text-lg">cart ({cart.length})</span>
+        </Link>
+      </div>
       <div className="text-2xl font-semibold sm:text-[32px] my-5 text-[#2A254B]">
         Our popular products
       </div>
