@@ -56,10 +56,7 @@ const CartPage = () => {
     });
   };
 
-  const handleQuantityChange = (
-    slug: string,
-    type: "increase" | "decrease"
-  ) => {
+  const handleQuantityChange = (slug: string, type: "increase" | "decrease") => {
     const updatedCart = cart.map((item) =>
       item.slug.current === slug
         ? {
