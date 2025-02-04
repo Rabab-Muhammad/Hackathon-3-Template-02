@@ -44,13 +44,13 @@ const CheckoutPage = () => {
     }
   }, []);
 
-  const getTotalPrice = () => {
+  const getSubTotal = () => {
     return cart.reduce((total, item) => total + item.price * item.quantity, 0);
   };
 
   const getShippingFee = () => 200;
 
-  const getGrandTotal = () => getTotalPrice() + getShippingFee();
+  const getTotal = () => getSubTotal() + getShippingFee();
 
   const handleCheckout = async () => {
     if (!name || !phone || !address || !city || !zipCode) {
@@ -89,12 +89,12 @@ const CheckoutPage = () => {
         city,
         zipCode,
         products: formattedProducts,
-        totalAmount: getTotalPrice(),
+        totalAmount: getSubTotal(),
         shippingFee: getShippingFee(),
         grandTotal:
           discountedTotal !== null
             ? discountedTotal + getShippingFee()
-            : getGrandTotal(),
+            : getTotal(),
         orderDate: new Date().toISOString(),
         promoCode: promoCode || null,
       };
@@ -124,7 +124,7 @@ const CheckoutPage = () => {
 
   const applyPromoCode = () => {
     if (promoCode === "DISCOUNT10") {
-      const discountPrice = getTotalPrice() * 0.9; // 10% discount
+      const discountPrice = getSubTotal() * 0.9; // 10% discount
       setDiscountedTotal(discountPrice);
       Swal.fire("Promo Code Applied!", "You got a 10% discount!", "success");
     } else {
@@ -192,7 +192,7 @@ const CheckoutPage = () => {
                   </div>
                 </div>
                 <div className="flex justify-between font-semibold text-lg">
-                  <span>SubTotal</span> <span>${getTotalPrice()}</span>
+                  <span>SubTotal</span> <span>${getSubTotal()}</span>
                 </div>
                 <div className="flex justify-between font-semibold text-lg">
                   <span>Shipping Fee</span> <span>${getShippingFee()}</span>
@@ -203,7 +203,7 @@ const CheckoutPage = () => {
                     $
                     {discountedTotal !== null
                       ? discountedTotal + getShippingFee()
-                      : getGrandTotal()}
+                      : getTotal()}
                   </span>
                 </div>
               </div>
