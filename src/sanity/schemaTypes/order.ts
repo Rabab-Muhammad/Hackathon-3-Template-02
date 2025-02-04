@@ -66,9 +66,9 @@ const orderSchema = {
           },
         ],
       },
-      { name: "totalAmount", title: "Total Amount", type: "number" },
+      { name: "subTotal", title: "Sub Total", type: "number" },
       { name: "shippingFee", title: "Shipping Fee", type: "number" },
-      { name: "grandTotal", title: "Grand Total", type: "number" },
+      { name: "Total", title: "Total", type: "number" },
       {
         name: "status",
         title: "Status",
