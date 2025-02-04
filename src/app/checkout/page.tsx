@@ -32,7 +32,7 @@ const CheckoutPage = () => {
   const [email, setEmail] = useState<string>("");
   const [address, setAddress] = useState<string>("");
   const [city, setCity] = useState<string>("");
-  const [zipcode, setZipcode] = useState<string>("");
+  const [zipCode, setZipCode] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [orderPlaced, setOrderPlaced] = useState<boolean>(false);
 
@@ -53,7 +53,7 @@ const CheckoutPage = () => {
   const getGrandTotal = () => getTotalPrice() + getShippingFee();
 
   const handleCheckout = async () => {
-    if (!name || !phone || !address || !city || !zipcode) {
+    if (!name || !phone || !address || !city || !zipCode) {
       Swal.fire(
         "Missing Information",
         "Please fill in all required fields",
@@ -87,7 +87,7 @@ const CheckoutPage = () => {
         email,
         address,
         city,
-        zipcode,
+        zipCode,
         products: formattedProducts,
         totalAmount: getTotalPrice(),
         shippingFee: getShippingFee(),
@@ -103,7 +103,7 @@ const CheckoutPage = () => {
 
       Swal.fire(
         "Order Placed Successfully!",
-        `Shipping to: ${address}, ${city} - ${zipcode}`,
+        `Shipping to: ${address}, ${city} - ${zipCode}`,
         "success"
       );
 
@@ -250,8 +250,8 @@ const CheckoutPage = () => {
             <input
               type="text"
               placeholder="Zip Code"
-              value={zipcode}
-              onChange={(e) => setZipcode(e.target.value)}
+              value={zipCode}
+              onChange={(e) => setZipCode(e.target.value)}
               className="w-full p-3 border rounded-md mb-4"
             />
             <Button
