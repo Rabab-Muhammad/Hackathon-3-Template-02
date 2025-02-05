@@ -1,0 +1,9 @@
+"Test Case 
+ID ",Test case Description,Steps,Expected Result,Actual Result,Status,Remarks
+TC001,Validate product listing,"Open ""All Products"" page > Verify product categories and filters","Products displayed with correct categories (Furniture, Decor)",Products displayed correctly,Passed,No issues found
+TC002,Test API error handling,Disconnect API > Refresh page,Show fallback message,Fallback message shown,Passed,Handled gracefully
+TC003,Check cart functionality,Add item to cart > Verify cart updates,Cart updates correctly with correct price calculation,Cart updates correctly,Passed,Works as expected
+TC004,Test responsiveness,Resize browser window > Check layout on mobile and desktop,Layout adjusts properly,Layout adjusts properly,Passed,Responsive verified
+TC005,"Test ""New Ceramics"" & ""Popular Products"" section",Open homepage > Verify product listings under these sections,Correct products displayed under respective sections,Products displayed correctly,Passed,Verified homepage product placement
+TC006,Verify filtering functionality,"Apply filters (Furniture, Decor) > Check product results",Only filtered products should be displayed,Filter works as expected,Passed,Filters functioning correctly
+TC007,Validate checkout process,Add product to cart > Proceed to checkout > Complete payment,Order should be placed successfully,Order placed successfully,Passed,Payment and checkout working fine
